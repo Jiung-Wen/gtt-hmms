@@ -1,7 +1,18 @@
-# gtt-hmms
-Single copy gene (SCG)-set HMMs for GToTree
+# gtt-hmms for _Bacteroidetes_ and _Bacteroidaceae_
+Custom single copy gene (SCG)-set HMMs for [GToTree](https://github.com/AstrobioMike/GToTree) (a user-friendly workflow for phylogenomics).
 
 
+## Example usage
+**Note**: It is assumed that GToTree is properly installed.  
+
+Put the hmm files in hmm_sets to the path you see by running ```gtt-hmms``` and then run GToTree normally:
+
+```bash
+GToTree -a ncbi_accssion.txt \
+        -H Bacteroidetes_2022-04 \
+        -j 4 \
+        -o output
+```
 
 ## Downloading complete genomes (accessed on April 25, 2022)
 The complete genomes were downloaded using the following commands:
@@ -16,8 +27,12 @@ esearch -query '"bacteria"[filter] AND "Bacteroidaceae"[ORGN] AND "Complete geno
 ```
 As a result, 1,053 and 99 complete genome assemblies for _Bacteroidetes_ and _Bacteroidaceae_, respectively, were downloaded from NCBI database.
 
+## Generating custom single-copy genes (SCGs) hidden Markov models
+The steps and code used to generate the HMMs were as described in [GToTree's tutorial](https://github.com/AstrobioMike/GToTree/wiki/SCG-sets), except that 9,892 Pfams with coverage greater than 50% out of all 19,632 Pfams from release 35.0 were searched against.
 
-## Single-copy genes (SCGs) for phylogenomic tree reconstruction
+---
+
+## SCGs for phylogenomic tree reconstruction
 | Target taxa | # of genes | pfam names |
 | :---: | :---: | ---|
 | phylum _Bacteroidetes_ | 112 | 5-FTHF_cyc-lig, Actin, ADK, AIRC, ATP-synt, ATP-synt_A, ATP-synt_B, ATP-synt_DE_N, BacA, Chorismate_synt, Cpn60_TCP1, Cytidylate_kin, DHquinase_II, DMRL_synthase, DUF2795, DUF3109, DUF3467, DUF4290, DUF4293, DUF4295, EF_TS, eIF-1a, FolB, FtsL_2, GidB, GrpE, Ham1p_like, LptE, LpxC, Lum_binding, Maf, Methyltransf_5, MnmE_helical, MreC, OSCP, PdxA, Pept_tRNA_hydro, PGK, Porin_10, Prenyltransf, RBFA, RecX, Ribonuclease_P, Ribosom_S12_S23, Ribosomal_L1, Ribosomal_L13, Ribosomal_L14, Ribosomal_L16, Ribosomal_L17, Ribosomal_L18p, Ribosomal_L19, Ribosomal_L20, Ribosomal_L21p, Ribosomal_L22, Ribosomal_L23, ribosomal_L24, Ribosomal_L27, Ribosomal_L27A, Ribosomal_L28, Ribosomal_L29, Ribosomal_L3, Ribosomal_L31, Ribosomal_L32p, Ribosomal_L33, Ribosomal_L34, Ribosomal_L35p, Ribosomal_L36, Ribosomal_L4, Ribosomal_L6, Ribosomal_L9_C, Ribosomal_S10, Ribosomal_S11, Ribosomal_S13, Ribosomal_S14, Ribosomal_S15, Ribosomal_S17, Ribosomal_S19, Ribosomal_S2, Ribosomal_S20p, Ribosomal_S21, Ribosomal_S6, Ribosomal_S7, Ribosomal_S8, Ribosomal_S9, Ribul_P_3_epim, RNA_pol_L, RNA_pol_Rpb6, RNase_HII, RRF, RsfS, RuvX, SAICAR_synt, SecE, SecG, SecY, SmpB, SufE, SurE, TGT, TIM, Transcrip_reg, tRNA_m1G_MT, tRNA-synt_1d, tRNA-synt_1e, tRNA-synt_2c, tRNA-synt_His, UPF0102, YajC, YbeY, YceD, YicC_N, ZapA |
