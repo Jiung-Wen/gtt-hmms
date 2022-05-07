@@ -1,6 +1,22 @@
 # gtt-hmms
 Single copy gene (SCG)-set HMMs for GToTree
 
+
+
+## Downloading complete genomes (accessed on April 25, 2022)
+The complete genomes were downloaded using the following commands:
+```bash
+# phylum Bacteroidetes
+esearch -query '"bacteria"[filter] AND ("Bacteroidetes"[Organism] OR "Bacteroidia"[Organism]) AND "Complete genome"[filter] AND latest[filter] NOT anomalous[filter] AND "has annotation"[Properties]' -db assembly | esummary | xtract -pattern DocumentSummary -def "NA" -element AssemblyAccession Taxid SpeciesTaxid Organism AssemblyStatus RefSeq_category FtpPath_GenBank FtpPath_RefSeq FtpPath_Assembly_rpt > Complete_genome_bacteroidetes_ncbi_info.tsv
+```
+
+```bash
+# family Bacteroidaceae
+esearch -query '"bacteria"[filter] AND "Bacteroidaceae"[ORGN] AND "Complete genome"[filter] AND latest[filter] NOT anomalous[filter] AND "has annotation"[Properties]' -db assembly | esummary | xtract -pattern DocumentSummary -def "NA" -element AssemblyAccession Taxid SpeciesTaxid Organism AssemblyStatus RefSeq_category FtpPath_GenBank FtpPath_RefSeq FtpPath_Assembly_rpt > Complete_genome_bacteroidaceae_ncbi_info.tsv
+```
+As a result, 1,053 and 99 complete genome assemblies for _Bacteroidetes_ and _Bacteroidaceae_, respectively, were downloaded from NCBI database.
+
+
 ## Single-copy genes (SCGs) for phylogenomic tree reconstruction
 | Target taxa | # of genes | pfam names |
 | :---: | :---: | ---|
